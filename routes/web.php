@@ -17,4 +17,8 @@ use App\Http\Controllers\RecetaController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/nosotros', RecetaController::class);
+Route::get('/recetas', RecetaController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
