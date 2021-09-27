@@ -80,7 +80,7 @@
                         value="{{old('preparacion')}}"
                     >
                     <trix-editor 
-                        class="form-control @error('preparacion') is-invalid @enderror"
+                        class="@error('preparacion') is-invalid @enderror"
                         input="preparacion"
                     >
                     </trix-editor>
@@ -102,7 +102,7 @@
                         value="{{old('ingredientes')}}"
                     >
                     <trix-editor 
-                        class="form-control @error('ingredientes') is-invalid @enderror"
+                        class="@error('ingredientes') is-invalid @enderror"
                         input="ingredientes"
                     >
                     </trix-editor>
