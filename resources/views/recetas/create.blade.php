@@ -20,7 +20,7 @@
 
     <div class="row justify-content-center mt-5">
         <div class="col-md-8">
-            <form action="{{ route('recetas.store') }}" method="post" novalidate>
+            <form action="{{ route('recetas.store') }}" method="post" enctype="multipart/form-data" novalidate>
                 @csrf
                 <div class="form-group">
                     <label for="titulo">
@@ -74,14 +74,15 @@
                 <div class="form-group mt-3">
                     <label for="preparacion">Preparación</label>
                     <input 
-                        id="preparacion" 
+                        id="preparacion"
                         type="hidden" 
                         name="preparacion"
                         value="{{old('preparacion')}}"
                     >
                     <trix-editor 
-                        class="@error('preparacion') is-invalid @enderror"
+                        class="form-control @error('preparacion') is-invalid @enderror"
                         input="preparacion"
+                        style="height:400px"
                     >
                     </trix-editor>
                     @error('preparacion')
@@ -102,17 +103,29 @@
                         value="{{old('ingredientes')}}"
                     >
                     <trix-editor 
-                        class="@error('ingredientes') is-invalid @enderror"
+                        class="form-control @error('ingredientes') is-invalid @enderror"
                         input="ingredientes"
+                        style="height:400px"
                     >
                     </trix-editor>
                     @error('ingredientes')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>
-                            {{$message}}
-                        </strong>
-                    </span>
-                @enderror
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>
+                                {{$message}}
+                            </strong>
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="imagen">Elige la imagen</label>
+                    <input 
+                        id="imagen" 
+                        name="imagen"
+                        type="file"
+                        class="form-control @error('imagen  ') is-invalid @enderror"
+                    >
+
                 </div>
 
                 <div class="form-group">
@@ -120,6 +133,13 @@
                         class="btn btn-primary"
                         value="Agregar Receta"
                     >
+                    @error('imagen')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>
+                                {{$message}}
+                            </strong>
+                        </span>
+                    @enderror
                 </div>
             </form>
         </div>
