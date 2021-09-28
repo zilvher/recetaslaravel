@@ -21,11 +21,9 @@ class RecetaController extends Controller
      */
     public function index()
     {
-        $recetas = ['Receta Silpancho', 'Receta Pique'];
-        $categorias = ['Plato Principal', 'Sopas'];
-        return view('recetas/index')
-                ->with('recetas', $recetas)
-                ->with('categorias', $categorias);
+        // auth()->user()->recetas; //otra manera sin usar la clase Auth
+        $recetas = Auth::user()->recetas;
+        return view('recetas/index')->with('recetas', $recetas);
     }
 
     /**
@@ -36,7 +34,7 @@ class RecetaController extends Controller
     public function create()
     {
         // DB::table('categoria_receta')->get()->pluck('nombre', 'id')->dd();
-        $categorias = DB::table('categoria_receta')->get()->pluck('nombre', 'id');
+        $categorias = DB::table('categoria_recetas')->get()->pluck('nombre', 'id');
         return view('recetas.create')->with('categorias', $categorias);
     }
 

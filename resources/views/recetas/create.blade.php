@@ -16,7 +16,7 @@
         Crear Nueva Receta
     </h2>
     
-    {{$categorias}}
+    <!-- {{$categorias}} -->
 
     <div class="row justify-content-center mt-5">
         <div class="col-md-8">
@@ -125,6 +125,13 @@
                         type="file"
                         class="form-control @error('imagen  ') is-invalid @enderror"
                     >
+                    @error('imagen')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>
+                                {{$message}}
+                            </strong>
+                        </span>
+                    @enderror
 
                 </div>
 
@@ -133,13 +140,7 @@
                         class="btn btn-primary"
                         value="Agregar Receta"
                     >
-                    @error('imagen')
-                        <span class="invalid-feedback d-block" role="alert">
-                            <strong>
-                                {{$message}}
-                            </strong>
-                        </span>
-                    @enderror
+                    
                 </div>
             </form>
         </div>
