@@ -52,12 +52,12 @@
                         id="categoria"
                     >
                         <option value="">-- Seleccione --</option>
-                    @foreach ($categorias as $id => $categoria)
+                    @foreach ($categorias as $categoria)
                         <option 
-                            value="{{ $id }}" 
-                            {{old('categoria') == $id ? 'selected' : ''}}
+                            value="{{ $categoria->id }}" 
+                            {{old('categoria') == $categoria->id ? 'selected' : ''}}
                         >
-                            {{$categoria}}
+                            {{$categoria->nombre}}
                         </option>                        
                     @endforeach
                     </select>
@@ -123,6 +123,7 @@
                         id="imagen" 
                         name="imagen"
                         type="file"
+                        value="{{old('imagen')}}"
                         class="form-control @error('imagen  ') is-invalid @enderror"
                     >
                     @error('imagen')
