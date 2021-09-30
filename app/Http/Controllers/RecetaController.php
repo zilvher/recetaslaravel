@@ -124,6 +124,7 @@ class RecetaController extends Controller
      */
     public function update(Request $request, Receta $receta)
     {
+        $this->authorize('update', $receta);
         //
         $data = request()->validate([
             'titulo' => 'required | min:6',
@@ -162,5 +163,6 @@ class RecetaController extends Controller
     public function destroy(Receta $receta)
     {
         //
+        return "desde destroy";
     }
 }
