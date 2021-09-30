@@ -67,6 +67,7 @@ class RecetaPolicy
     public function delete(User $user, Receta $receta)
     {
         //
+        return $user->id === $receta->user_id;        
     }
 
     /**

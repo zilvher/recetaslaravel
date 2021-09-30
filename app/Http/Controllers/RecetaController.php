@@ -162,7 +162,12 @@ class RecetaController extends Controller
      */
     public function destroy(Receta $receta)
     {
-        //
-        return "desde destroy";
+        //Ejecutar policy
+        $this->authorize('delete', $receta);
+
+        //Eliminar receta
+        $receta->delete();
+
+        return redirect()->action([RecetaController::class, 'index']);
     }
 }
